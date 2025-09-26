@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Logic Co., Ltd. | Software Development</title>
+    
+    <!-- Tailwind CSS Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    
+    <!-- Main Tailwind CSS Library -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://css.gg/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Define custom font families */
+        body {
+            font-family: 'Inter', 'Sarabun', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        /* Language specific visibility */
+        .lang-en, .lang-th {
+            display: none;
+        }
+
+        /* Show active language */
+        html[lang="en"] .lang-en {
+            display: inline; /* Use inline to prevent layout shifts */
+        }
+        html[lang="th"] .lang-th {
+            display: inline; /* Use inline to prevent layout shifts */
+        }
+        
+        /* Smooth transitions for colors and backgrounds */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+    </style>
+    
+    <script>
+        // Set theme and language on initial load to prevent FOUC (Flash of Unstyled Content)
+        try {
+            const theme = localStorage.getItem('color-theme');
+            const lang = localStorage.getItem('language') || 'th';
+
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            document.documentElement.lang = lang;
+        } catch (e) {
+            console.error("Could not access localStorage:", e);
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="little logic-02.jpg" alt="Little Logic Logo" class="h-10 w-auto">
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                 <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
+                    <span class="lang-en">Services</span>
+                    <span class="lang-th">บริการ</span>
+                </a>
+                <a href="#tech-stack" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
+                    <span class="lang-en">Technology</span>
+                    <span class="lang-th">เทคโนโลยี</span>
+                </a>
+                <a href="#process" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
+                    <span class="lang-en">Process</span>
+                    <span class="lang-th">ขั้นตอนการทำงาน</span>
+                </a>
+                 <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
+                    <span class="lang-en">Contact</span>
+                    <span class="lang-th">ติดต่อเรา</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="lang-toggle" class="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                    <span class="lang-en">TH</span>
+                    <span class="lang-th">EN</span>
+                </button>
+                <button id="theme-toggle" class="p-2 rounded-md text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center" data-aos="fade-in">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
+                    <span class="lang-en">Transforming Ideas into Digital Reality.</span>
+                    <span class="lang-th">เปลี่ยนไอเดียของคุณให้เป็นจริงด้วยดิจิทัล</span>
+                </h1>
+                <p class="mt-6 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                    <span class="lang-en">Little Logic is your trusted partner in custom software development, delivering robust, scalable, and intuitive solutions that drive your business forward.</span>
+                    <span class="lang-th">ลิตเติ้ลลอจิก คือพาร์ทเนอร์ที่เชื่อถือได้ด้านการพัฒนาซอฟต์แวร์ เราส่งมอบโซลูชันที่แข็งแกร่ง ยืดหยุ่น และใช้งานง่าย เพื่อขับเคลื่อนธุรกิจของคุณให้ก้าวไปข้างหน้า</span>
+                </p>
+                <a href="#contact" class="mt-8 inline-block bg-[#00A99D] text-white font-bold py-3 px-8 rounded-lg text-lg hover:bg-[#00897b] transition duration-300">
+                    <span class="lang-en">Get a Free Consultation</span>
+                    <span class="lang-th">ปรึกษาเราฟรี</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-white dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                        <span class="lang-en">Our Services</span>
+                        <span class="lang-th">บริการของเรา</span>
+                    </h2>
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">
+                        <span class="lang-en">We build digital products that people love to use.</span>
+                        <span class="lang-th">เราสร้างสรรค์ผลิตภัณฑ์ดิจิทัลที่ทุกคนชื่นชอบ</span>
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-aos="fade-up">
+                         <div class="bg-[#00A99D]/20 text-[#00A99D] rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                            <span class="lang-en">Web Development</span>
+                            <span class="lang-th">พัฒนาเว็บไซต์และเว็บแอปพลิเคชัน</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Crafting high-performance, responsive websites and web applications tailored to your specific business needs.</span>
+                            <span class="lang-th">สร้างสรรค์เว็บไซต์และเว็บแอปพลิเคชันประสิทธิภาพสูง ตอบสนองทุกการใช้งาน และปรับแต่งให้เข้ากับความต้องการทางธุรกิจของคุณโดยเฉพาะ</span>
+                        </p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-[#00A99D]/20 text-[#00A99D] rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                            <span class="lang-en">Mobile App Development</span>
+                            <span class="lang-th">พัฒนาโมบายล์แอปพลิเคชัน</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Building native and cross-platform mobile apps for iOS and Android that offer seamless user experiences.</span>
+                            <span class="lang-th">พัฒนาแอปพลิเคชันสำหรับ iOS และ Android ทั้งแบบ Native และ Cross-platform เพื่อมอบประสบการณ์การใช้งานที่ราบรื่นไร้ที่ติ</span>
+                        </p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-[#00A99D]/20 text-[#00A99D] rounded-full w-16 h-16 flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                            <span class="lang-en">UI/UX & Product Design</span>
+                            <span class="lang-th">ออกแบบ UI/UX และผลิตภัณฑ์</span>
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            <span class="lang-en">Designing intuitive, beautiful, and user-centric interfaces that solve real problems and delight users.</span>
+                            <span class="lang-th">ออกแบบหน้าจอการใช้งานที่สวยงาม ใช้งานง่าย โดยยึดผู้ใช้เป็นศูนย์กลาง เพื่อแก้ปัญหาและสร้างความพึงพอใจสูงสุดให้กับผู้ใช้งาน</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section id="why-us" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                        <span class="lang-en">Why Choose Little Logic?</span>
+                        <span class="lang-th">ทำไมต้องเลือก Little Logic?</span>
+                    </h2>
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">
+                        <span class="lang-en">Your success is our priority.</span>
+                        <span class="lang-th">ความสำเร็จของคุณคือสิ่งที่เราให้ความสำคัญสูงสุด</span>
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div data-aos="fade-up">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-full inline-flex items-center justify-center shadow-lg mb-4">
+                            <svg class="w-10 h-10 text-[#00A99D]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white"><span class="lang-en">Expert Team</span><span class="lang-th">ทีมผู้เชี่ยวชาญ</span></h3>
+                        <p class="dark:text-gray-300"><span class="lang-en">A dedicated team of developers, designers, and project managers.</span><span class="lang-th">ทีมงานนักพัฒนา นักออกแบบ และผู้จัดการโครงการที่ทุ่มเทและมากประสบการณ์</span></p>
+                    </div>
+                     <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-full inline-flex items-center justify-center shadow-lg mb-4">
+                            <svg class="w-10 h-10 text-[#00A99D]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white"><span class="lang-en">Quality Assurance</span><span class="lang-th">การประกันคุณภาพ</span></h3>
+                        <p class="dark:text-gray-300"><span class="lang-en">We conduct rigorous testing to ensure your product is bug-free and reliable.</span><span class="lang-th">เราทดสอบระบบอย่างละเอียดเพื่อให้มั่นใจว่าผลิตภัณฑ์ของคุณมีคุณภาพและเสถียร</span></p>
+                    </div>
+                     <div data-aos="fade-up" data-aos-delay="200">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-full inline-flex items-center justify-center shadow-lg mb-4">
+                           <svg class="w-10 h-10 text-[#00A99D]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white"><span class="lang-en">On-Time Delivery</span><span class="lang-th">ส่งมอบตรงเวลา</span></h3>
+                        <p class="dark:text-gray-300"><span class="lang-en">We respect your time and deadlines, delivering projects on schedule.</span><span class="lang-th">เราเคารพเวลาของคุณและส่งมอบโปรเจกต์ตามกำหนดการที่วางไว้เสมอ</span></p>
+                    </div>
+                     <div data-aos="fade-up" data-aos-delay="300">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-full inline-flex items-center justify-center shadow-lg mb-4">
+                            <svg class="w-10 h-10 text-[#00A99D]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 dark:text-white"><span class="lang-en">Agile Methodology</span><span class="lang-th">กระบวนการแบบ Agile</span></h3>
+                        <p class="dark:text-gray-300"><span class="lang-en">Our flexible process allows for adjustments and iterations for the best result.</span><span class="lang-th">เราทำงานแบบยืดหยุ่น พร้อมปรับเปลี่ยนเพื่อให้ได้ผลลัพธ์ที่ดีที่สุด</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Tech Stack Section -->
+        <section id="tech-stack" class="py-20 bg-white dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                        <span class="lang-en">Our Technology Stack</span>
+                        <span class="lang-th">เทคโนโลยีที่เราเชี่ยวชาญ</span>
+                    </h2>
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">
+                        <span class="lang-en">We use modern, robust, and scalable technologies to build your solutions.</span>
+                        <span class="lang-th">เราใช้เทคโนโลยีที่ทันสมัย แข็งแกร่ง และยืดหยุ่นในการสร้างสรรค์ผลงาน</span>
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div data-aos="fade-up">
+                        <h3 class="text-2xl font-semibold mb-4 text-[#00A99D]">Frontend</h3>
+                        <ul class="space-y-2 dark:text-gray-300">
+                            <li>JavaScript (ES6+)</li>
+                            <li>TypeScript</li>
+                            <li>React / Next.js</li>
+                            <li>Vue.js / Nuxt.js</li>
+                            <li>HTML5 & CSS3</li>
+                            <li>Tailwind CSS</li>
+                        </ul>
+                    </div>
+                     <div data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="text-2xl font-semibold mb-4 text-[#00A99D]">Backend</h3>
+                        <ul class="space-y-2 dark:text-gray-300">
+                            <li>Node.js (Express)</li>
+                            <li>Python (Django, Flask)</li>
+                            <li>PHP (Laravel)</li>
+                            <li>Go</li>
+                            <li>REST & GraphQL APIs</li>
+                        </ul>
+                    </div>
+                     <div data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-2xl font-semibold mb-4 text-[#00A99D]">Mobile</h3>
+                        <ul class="space-y-2 dark:text-gray-300">
+                            <li>React Native</li>
+                            <li>Flutter</li>
+                            <li>Swift (iOS)</li>
+                            <li>Kotlin (Android)</li>
+                        </ul>
+                    </div>
+                     <div data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="text-2xl font-semibold mb-4 text-[#00A99D]">Database & DevOps</h3>
+                        <ul class="space-y-2 dark:text-gray-300">
+                            <li>PostgreSQL</li>
+                            <li>MySQL / MariaDB</li>
+                            <li>MongoDB</li>
+                            <li>Firebase</li>
+                            <li>Docker</li>
+                            <li>AWS / Google Cloud</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                        <span class="lang-en">Our Development Process</span>
+                        <span class="lang-th">ขั้นตอนการทำงานของเรา</span>
+                    </h2>
+                     <p class="mt-4 text-gray-600 dark:text-gray-400">
+                        <span class="lang-en">A streamlined process to ensure efficiency and quality from start to finish.</span>
+                        <span class="lang-th">กระบวนการที่เป็นระบบเพื่อประสิทธิภาพและคุณภาพสูงสุดตั้งแต่ต้นจนจบ</span>
+                    </p>
+                </div>
+                <div class="relative">
+                    <!-- The connecting line -->
+                    <div class="hidden md:block absolute top-5 left-1/2 w-0.5 h-full -translate-x-1/2 bg-gray-300 dark:bg-gray-700"></div>
+                    
+                    <div class="space-y-12 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-12">
+                        <!-- Step 1 -->
+                        <div class="md:pr-12" data-aos="fade-right">
+                             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-[#00A99D]">
+                                <h3 class="text-xl font-bold mb-2 dark:text-white"><span class="text-2xl text-[#00A99D] font-black mr-2">1.</span><span class="lang-en">Discovery & Planning</span><span class="lang-th">วิเคราะห์และวางแผน</span></h3>
+                                <p class="dark:text-gray-300"><span class="lang-en">We start by understanding your vision, goals, and requirements to create a detailed project roadmap.</span><span class="lang-th">เริ่มต้นด้วยการทำความเข้าใจวิสัยทัศน์ เป้าหมาย และความต้องการของคุณ เพื่อสร้างแผนงานที่ชัดเจน</span></p>
+                            </div>
+                        </div>
+                        <div></div>
+                        
+                        <div></div>
+                        <!-- Step 2 -->
+                         <div class="md:pl-12" data-aos="fade-left">
+                             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-r-4 md:border-r-0 md:border-l-4 border-[#00A99D]">
+                                <h3 class="text-xl font-bold mb-2 dark:text-white"><span class="text-2xl text-[#00A99D] font-black mr-2">2.</span><span class="lang-en">UI/UX Design</span><span class="lang-th">ออกแบบ UI/UX</span></h3>
+                                <p class="dark:text-gray-300"><span class="lang-en">Our designers create intuitive and engaging interfaces, focusing on delivering the best user experience.</span><span class="lang-th">ทีมนักออกแบบของเราสร้างสรรค์หน้าตาโปรแกรมที่สวยงามและใช้งานง่าย โดยเน้นที่ประสบการณ์ผู้ใช้</span></p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="md:pr-12" data-aos="fade-right">
+                             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-[#00A99D]">
+                                <h3 class="text-xl font-bold mb-2 dark:text-white"><span class="text-2xl text-[#00A99D] font-black mr-2">3.</span><span class="lang-en">Development</span><span class="lang-th">พัฒนาซอฟต์แวร์</span></h3>
+                                <p class="dark:text-gray-300"><span class="lang-en">Our expert developers write clean, efficient, and scalable code to bring your project to life.</span><span class="lang-th">นักพัฒนาของเราเขียนโค้ดที่มีคุณภาพ สะอาด และยืดหยุ่น เพื่อสร้างโปรเจกต์ของคุณให้เป็นจริง</span></p>
+                            </div>
+                        </div>
+                        <div></div>
+
+                        <div></div>
+                        <!-- Step 4 -->
+                         <div class="md:pl-12" data-aos="fade-left">
+                             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-r-4 md:border-r-0 md:border-l-4 border-[#00A99D]">
+                                <h3 class="text-xl font-bold mb-2 dark:text-white"><span class="text-2xl text-[#00A99D] font-black mr-2">4.</span><span class="lang-en">Testing & QA</span><span class="lang-th">ทดสอบและประกันคุณภาพ</span></h3>
+                                <p class="dark:text-gray-300"><span class="lang-en">We perform comprehensive testing to ensure the software is stable, secure, and bug-free.</span><span class="lang-th">เราทดสอบระบบอย่างครอบคลุมเพื่อรับประกันว่าซอฟต์แวร์มีความเสถียร ปลอดภัย และไร้ข้อผิดพลาด</span></p>
+                            </div>
+                        </div>
+
+                         <!-- Step 5 -->
+                        <div class="md:pr-12" data-aos="fade-right">
+                             <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border-l-4 border-[#00A99D]">
+                                <h3 class="text-xl font-bold mb-2 dark:text-white"><span class="text-2xl text-[#00A99D] font-black mr-2">5.</span><span class="lang-en">Deployment & Launch</span><span class="lang-th">ติดตั้งและนำขึ้นระบบ</span></h3>
+                                <p class="dark:text-gray-300"><span class="lang-en">We handle the deployment process to ensure a smooth and seamless launch on your servers.</span><span class="lang-th">เราจัดการขั้นตอนการติดตั้งทั้งหมดเพื่อให้การเปิดตัวซอฟต์แวร์ของคุณเป็นไปอย่างราบรื่น</span></p>
+                            </div>
+                        </div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white dark:bg-gray-800">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+                        <span class="lang-en">Let's Build Something Great Together</span>
+                        <span class="lang-th">มาร่วมสร้างสรรค์สิ่งที่ยอดเยี่ยมไปด้วยกัน</span>
+                    </h2>
+                    <p class="mt-4 text-gray-600 dark:text-gray-400">
+                        <span class="lang-en">Have a project in mind? We'd love to hear about it.</span>
+                        <span class="lang-th">มีโปรเจกต์ที่น่าสนใจใช่ไหม? เราพร้อมรับฟังเสมอ</span>
+                    </p>
+                </div>
+                <div class="max-w-xl mx-auto bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg" data-aos="fade-up">
+                    <p class="text-center text-lg">
+                        <strong class="text-gray-900 dark:text-white">Email:</strong>
+                        <a href="mailto:contact@littlelogic.co" class="text-[#00A99D] hover:underline">contact@littlelogic.co</a>
+                    </p>
+                    <p class="text-center text-lg mt-4">
+                        <strong class="text-gray-900 dark:text-white">
+                            <span class="lang-en">Phone:</span>
+                            <span class="lang-th">โทรศัพท์:</span>
+                        </strong>
+                        <a href="tel:+66123456789" class="text-[#00A99D] hover:underline">+66 12 345 6789</a>
+                    </p>
+                     <p class="text-center text-gray-600 dark:text-gray-400 mt-6">
+                        <span class="lang-en">Bangkok, Thailand</span>
+                        <span class="lang-th">กรุงเทพมหานคร, ประเทศไทย</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-600 dark:text-gray-400">
+            &copy; 2024 Little Logic Co., Ltd. All Rights Reserved.
+        </div>
+    </footer>
+
+    
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800, // values from 0 to 3000, with step 50ms
+            once: true, // whether animation should happen only once - while scrolling down
+        });
+
+        // Theme Toggle Script
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Function to set theme
+        function setTheme(isDark) {
+            try {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    themeToggleDarkIcon.classList.add('hidden'); // Hide moon icon in dark mode
+                    themeToggleLightIcon.classList.remove('hidden'); // Show sun icon in dark mode
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    themeToggleLightIcon.classList.add('hidden'); // Hide sun icon in light mode
+                    themeToggleDarkIcon.classList.remove('hidden'); // Show moon icon in light mode
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } catch(e) {
+                console.error("Could not access localStorage to set theme:", e);
+            }
+        }
+
+        // Check initial theme from localStorage or system preference
+        try {
+            const isInitialDark = localStorage.getItem('color-theme') === 'dark' || 
+                                (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            setTheme(isInitialDark);
+        } catch(e) {
+            console.error("Could not access localStorage to get initial theme:", e);
+            setTheme(false); // Default to light mode if localStorage is unavailable
+        }
+        
+        // Add click event listener
+        themeToggleBtn.addEventListener('click', function() {
+            setTheme(!document.documentElement.classList.contains('dark'));
+        });
+
+        // Language Toggle Script
+        const langToggleBtn = document.getElementById('lang-toggle');
+
+        function setLanguage(lang) {
+            try {
+                document.documentElement.lang = lang;
+                localStorage.setItem('language', lang);
+            } catch(e) {
+                console.error("Could not access localStorage to set language:", e);
+            }
+        }
+
+        langToggleBtn.addEventListener('click', function() {
+            const currentLang = document.documentElement.lang;
+            const newLang = currentLang === 'th' ? 'en' : 'th';
+            setLanguage(newLang);
+        });
+
+    </script>
+</body>
+</html>
+
