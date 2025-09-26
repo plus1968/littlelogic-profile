@@ -4,17 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Logic Co., Ltd. | Software Development</title>
-    
-    <!-- Tailwind CSS Configuration -->
-    <script>
-        tailwind.config = {
-            darkMode: 'class'
-        }
-    </script>
-    
-    <!-- Main Tailwind CSS Library -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+   
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,10 +84,6 @@
                 <button id="lang-toggle" class="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
                     <span class="lang-en">TH</span>
                     <span class="lang-th">EN</span>
-                </button>
-                <button id="theme-toggle" class="p-2 rounded-md text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
-                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
                 </button>
             </div>
         </nav>
@@ -371,14 +357,14 @@
                 <div class="max-w-xl mx-auto bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg" data-aos="fade-up">
                     <p class="text-center text-lg">
                         <strong class="text-gray-900 dark:text-white">Email:</strong>
-                        <a href="mailto:contact@littlelogic.co" class="text-[#00A99D] hover:underline">littlelogicplus@gmail.com</a>
+                        <a href="mailto:contact@littlelogic.co" class="text-[#00A99D] hover:underline">contact@littlelogic.co</a>
                     </p>
                     <p class="text-center text-lg mt-4">
                         <strong class="text-gray-900 dark:text-white">
                             <span class="lang-en">Phone:</span>
                             <span class="lang-th">โทรศัพท์:</span>
                         </strong>
-                        <a href="tel:+66123456789" class="text-[#00A99D] hover:underline">+66 61 663 6558</a>
+                        <a href="tel:+66123456789" class="text-[#00A99D] hover:underline">+66 12 345 6789</a>
                     </p>
                      <p class="text-center text-gray-600 dark:text-gray-400 mt-6">
                         <span class="lang-en">Bangkok, Thailand</span>
@@ -396,7 +382,7 @@
         </div>
     </footer>
 
-    
+     <!-- Main Tailwind CSS Library -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -404,45 +390,6 @@
         AOS.init({
             duration: 800, // values from 0 to 3000, with step 50ms
             once: true, // whether animation should happen only once - while scrolling down
-        });
-
-        // Theme Toggle Script
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-        // Function to set theme
-        function setTheme(isDark) {
-            try {
-                if (isDark) {
-                    document.documentElement.classList.add('dark');
-                    themeToggleDarkIcon.classList.add('hidden'); // Hide moon icon in dark mode
-                    themeToggleLightIcon.classList.remove('hidden'); // Show sun icon in dark mode
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    themeToggleLightIcon.classList.add('hidden'); // Hide sun icon in light mode
-                    themeToggleDarkIcon.classList.remove('hidden'); // Show moon icon in light mode
-                    localStorage.setItem('color-theme', 'light');
-                }
-            } catch(e) {
-                console.error("Could not access localStorage to set theme:", e);
-            }
-        }
-
-        // Check initial theme from localStorage or system preference
-        try {
-            const isInitialDark = localStorage.getItem('color-theme') === 'dark' || 
-                                (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-            setTheme(isInitialDark);
-        } catch(e) {
-            console.error("Could not access localStorage to get initial theme:", e);
-            setTheme(false); // Default to light mode if localStorage is unavailable
-        }
-        
-        // Add click event listener
-        themeToggleBtn.addEventListener('click', function() {
-            setTheme(!document.documentElement.classList.contains('dark'));
         });
 
         // Language Toggle Script
