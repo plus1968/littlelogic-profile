@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Logic Co., Ltd. | Software Development</title>
-   
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,30 +61,30 @@
     <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-md">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-4">
-                <img src="little logic-02.jpg" alt="Little Logic Logo" class="h-10 w-auto">
+                <img src="https://placehold.co/200x50/ffffff/000000?text=Little+Logic" alt="Little Logic Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='https://placehold.co/200x50/ffffff/000000?text=Logo+Error';">
             </div>
             <div class="hidden md:flex items-center space-x-6">
                  <a href="#services" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
-                    <span class="lang-en">Services</span>
-                    <span class="lang-th">บริการ</span>
-                </a>
-                <a href="#tech-stack" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
-                    <span class="lang-en">Technology</span>
-                    <span class="lang-th">เทคโนโลยี</span>
-                </a>
-                <a href="#process" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
-                    <span class="lang-en">Process</span>
-                    <span class="lang-th">ขั้นตอนการทำงาน</span>
-                </a>
-                 <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
-                    <span class="lang-en">Contact</span>
-                    <span class="lang-th">ติดต่อเรา</span>
-                </a>
+                     <span class="lang-en">Services</span>
+                     <span class="lang-th">บริการ</span>
+                 </a>
+                 <a href="#tech-stack" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
+                     <span class="lang-en">Technology</span>
+                     <span class="lang-th">เทคโนโลยี</span>
+                 </a>
+                 <a href="#process" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
+                     <span class="lang-en">Process</span>
+                     <span class="lang-th">ขั้นตอนการทำงาน</span>
+                 </a>
+                  <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-[#00A99D] font-medium">
+                     <span class="lang-en">Contact</span>
+                     <span class="lang-th">ติดต่อเรา</span>
+                 </a>
             </div>
             <div class="flex items-center space-x-4">
                 <button id="lang-toggle" class="px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-200 dark:bg-gray-700 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
-                    <span class="lang-en">TH</span>
-                    <span class="lang-th">EN</span>
+                     <span class="lang-en">TH</span>
+                     <span class="lang-th">EN</span>
                 </button>
             </div>
         </nav>
@@ -350,26 +351,56 @@
                         <span class="lang-th">มาร่วมสร้างสรรค์สิ่งที่ยอดเยี่ยมไปด้วยกัน</span>
                     </h2>
                     <p class="mt-4 text-gray-600 dark:text-gray-400">
-                        <span class="lang-en">Have a project in mind? We'd love to hear about it.</span>
-                        <span class="lang-th">มีโปรเจกต์ที่น่าสนใจใช่ไหม? เราพร้อมรับฟังเสมอ</span>
+                        <span class="lang-en">Have a project in mind? Fill out the form below and we'll get back to you.</span>
+                        <span class="lang-th">มีโปรเจกต์ที่น่าสนใจใช่ไหม? กรอกแบบฟอร์มด้านล่างเพื่อติดต่อเราได้เลย</span>
                     </p>
                 </div>
-                <div class="max-w-xl mx-auto bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg" data-aos="fade-up">
-                    <p class="text-center text-lg">
-                        <strong class="text-gray-900 dark:text-white">Email:</strong>
-                        <a href="mailto:contact@littlelogic.co" class="text-[#00A99D] hover:underline">littlelogicplus@gmail.com</a>
-                    </p>
-                    <p class="text-center text-lg mt-4">
-                        <strong class="text-gray-900 dark:text-white">
-                            <span class="lang-en">Phone:</span>
-                            <span class="lang-th">โทรศัพท์:</span>
-                        </strong>
-                        <a href="tel:+66123456789" class="text-[#00A99D] hover:underline">+66 61 663 6558</a>
-                    </p>
-                     <p class="text-center text-gray-600 dark:text-gray-400 mt-6">
-                        <span class="lang-en">Bangkok, Thailand</span>
-                        <span class="lang-th">กรุงเทพมหานคร, ประเทศไทย</span>
-                    </p>
+                <div class="max-w-xl mx-auto" data-aos="fade-up">
+                    <!-- Form Container -->
+                    <div id="contact-form-container" class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg">
+                        <form id="google-form" class="space-y-6">
+                            <!-- Name Field -->
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300"><span class="lang-en">Full Name</span><span class="lang-th">ชื่อ-นามสกุล</span></label>
+                                <!-- IMPORTANT: Replace "entry.xxxx" with your actual entry ID -->
+                                <input type="text" id="name" name="entry.2005620554" required class="mt-1 block w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#00A99D] focus:border-[#00A99D]">
+                            </div>
+                            <!-- Email Field -->
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300"><span class="lang-en">Email Address</span><span class="lang-th">อีเมล</span></label>
+                                <!-- IMPORTANT: Replace "entry.xxxx" with your actual entry ID -->
+                                <input type="email" id="email" name="entry.1045781291" required class="mt-1 block w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#00A99D] focus:border-[#00A99D]">
+                            </div>
+                            <!-- Phone Field -->
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300"><span class="lang-en">Phone Number (Optional)</span><span class="lang-th">เบอร์โทรศัพท์ (ถ้ามี)</span></label>
+                                <!-- IMPORTANT: Replace "entry.xxxx" with your actual entry ID -->
+                                <input type="tel" id="phone" name="entry.1166974658" class="mt-1 block w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#00A99D] focus:border-[#00A99D]">
+                            </div>
+                            <!-- Message Field -->
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300"><span class="lang-en">Message</span><span class="lang-th">ข้อความ</span></label>
+                                <!-- IMPORTANT: Replace "entry.xxxx" with your actual entry ID -->
+                                <textarea id="message" name="entry.839337160" rows="4" required class="mt-1 block w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-[#00A99D] focus:border-[#00A99D]"></textarea>
+                            </div>
+                            <!-- Submit Button -->
+                            <div>
+                                <button type="submit" id="form-submit-button" class="w-full bg-[#00A99D] text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-[#00897b] transition duration-300 flex items-center justify-center disabled:bg-gray-400 disabled:cursor-not-allowed">
+                                    <span id="submit-text-en" class="lang-en">Send Message</span>
+                                    <span id="submit-text-th" class="lang-th">ส่งข้อความ</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Success Message -->
+                    <div id="form-success-message" class="hidden text-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold"><span class="lang-en">Thank You!</span><span class="lang-th">ขอบคุณครับ!</span></h3>
+                        <p class="mt-2 text-lg"><span class="lang-en">Your message has been sent successfully. We will get back to you shortly.</span><span class="lang-th">เราได้รับข้อความของคุณแล้ว และจะติดต่อกลับโดยเร็วที่สุด</span></p>
+                    </div>
+                    <!-- Error Message -->
+                    <div id="form-error-message" class="hidden text-center bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-200 p-8 rounded-xl shadow-lg mt-4">
+                         <p><span class="lang-en">Sorry, something went wrong. Please try again later.</span><span class="lang-th">ขออภัย เกิดข้อผิดพลาดบางอย่าง กรุณาลองใหม่อีกครั้ง</span></p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -382,8 +413,6 @@
         </div>
     </footer>
 
-     <!-- Main Tailwind CSS Library -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Initialize AOS
@@ -394,7 +423,6 @@
 
         // Language Toggle Script
         const langToggleBtn = document.getElementById('lang-toggle');
-
         function setLanguage(lang) {
             try {
                 document.documentElement.lang = lang;
@@ -403,13 +431,64 @@
                 console.error("Could not access localStorage to set language:", e);
             }
         }
-
         langToggleBtn.addEventListener('click', function() {
             const currentLang = document.documentElement.lang;
             const newLang = currentLang === 'th' ? 'en' : 'th';
             setLanguage(newLang);
         });
+        
+        // Google Form Submission Script
+        const contactForm = document.getElementById('google-form');
+        const submitButton = document.getElementById('form-submit-button');
+        const formContainer = document.getElementById('contact-form-container');
+        const successMessageContainer = document.getElementById('form-success-message');
+        const errorMessageContainer = document.getElementById('form-error-message');
 
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // --- IMPORTANT: USER CONFIGURATION ---
+            // PLEASE FOLLOW THE `form_setup_guide.md` FILE TO GET THESE VALUES.
+            // 1. Replace 'YOUR_FORM_ID_HERE' with your actual Google Form ID.
+            const formId = '1FAIpQLSeXBpAI3J3bZ_CnI29l-KJEjUXFYzH-RlLqYEu0GjBtez-44w'; 
+            
+            // 2. Make sure the `name` attribute in each <input> and <textarea> in the HTML
+            //    (e.g., name="entry.123456789") matches the one from your Google Form.
+            // --- END OF CONFIGURATION ---
+
+            // A simple check to prevent submission if the placeholder ID is still there.
+            if (formId === 'YOUR_FORM_ID_HERE') {
+                console.error("Google Form ID is not set. Please configure the form script.");
+                alert("The contact form is not configured yet.");
+                return;
+            }
+
+            const googleFormUrl = `https://docs.google.com/forms/d/e/${formId}/formResponse`;
+            const formData = new FormData(contactForm);
+
+            // Disable button and show loading text
+            submitButton.disabled = true;
+            document.getElementById('submit-text-en').textContent = 'Sending...';
+            document.getElementById('submit-text-th').textContent = 'กำลังส่ง...';
+
+
+            fetch(googleFormUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // We won't get a response back, but this prevents CORS errors
+            })
+            .then(() => {
+                // Assume success
+                formContainer.style.display = 'none';
+                successMessageContainer.style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                // Show error message and re-enable the form
+                formContainer.style.display = 'none';
+                errorMessageContainer.style.display = 'block';
+            });
+        });
     </script>
 </body>
 </html>
