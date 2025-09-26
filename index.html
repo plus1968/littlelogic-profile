@@ -396,10 +396,18 @@
                     <div id="form-success-message" class="hidden text-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-200 p-8 rounded-xl shadow-lg">
                         <h3 class="text-2xl font-bold"><span class="lang-en">Thank You!</span><span class="lang-th">ขอบคุณครับ!</span></h3>
                         <p class="mt-2 text-lg"><span class="lang-en">Your message has been sent successfully. We will get back to you shortly.</span><span class="lang-th">เราได้รับข้อความของคุณแล้ว และจะติดต่อกลับโดยเร็วที่สุด</span></p>
+                        <button id="send-another-success" class="mt-6 inline-block bg-[#00A99D] text-white font-bold py-2 px-6 rounded-lg text-md hover:bg-[#00897b] transition duration-300">
+                            <span class="lang-en">Send Another Message</span>
+                            <span class="lang-th">ส่งข้อความอีกครั้ง</span>
+                        </button>
                     </div>
                     <!-- Error Message -->
                     <div id="form-error-message" class="hidden text-center bg-red-100 dark:bg-red-900/50 text-red-800 dark:text-red-200 p-8 rounded-xl shadow-lg mt-4">
                          <p><span class="lang-en">Sorry, something went wrong. Please try again later.</span><span class="lang-th">ขออภัย เกิดข้อผิดพลาดบางอย่าง กรุณาลองใหม่อีกครั้ง</span></p>
+                         <button id="try-again-error" class="mt-6 inline-block bg-gray-600 text-white font-bold py-2 px-6 rounded-lg text-md hover:bg-gray-700 transition duration-300">
+                            <span class="lang-en">Try Again</span>
+                            <span class="lang-th">ลองอีกครั้ง</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -443,6 +451,27 @@
         const formContainer = document.getElementById('contact-form-container');
         const successMessageContainer = document.getElementById('form-success-message');
         const errorMessageContainer = document.getElementById('form-error-message');
+        const sendAnotherBtn = document.getElementById('send-another-success');
+        const tryAgainBtn = document.getElementById('try-again-error');
+
+
+        function resetForm() {
+            // Hide messages and show form
+            successMessageContainer.style.display = 'none';
+            errorMessageContainer.style.display = 'none';
+            formContainer.style.display = 'block';
+
+            // Reset the form fields
+            contactForm.reset();
+
+            // Re-enable submit button and reset its text
+            submitButton.disabled = false;
+            document.getElementById('submit-text-en').textContent = 'Send Message';
+            document.getElementById('submit-text-th').textContent = 'ส่งข้อความ';
+        }
+
+        sendAnotherBtn.addEventListener('click', resetForm);
+        tryAgainBtn.addEventListener('click', resetForm);
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
